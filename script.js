@@ -1,18 +1,31 @@
-const itemElm = document.querySelectorAll(".items");
-//let colors = ['red','green','blue','black','orange']
-let rcolorIndex, gcolorIndex, bcolorIndex;
+let userNameMessage = document.querySelector(".user-validation");
+let passWordMessage = document.querySelector(".password-validation");
+let usernameInput = document.querySelector("#username");
+let passwordInput = document.querySelector("#password");
+console.log(usernameInput.value);
+console.log(usernameInput.value.length);
+console.log("----------------------");
+usernameInput.addEventListener('blur',function () {
+  console.log(usernameInput.value);
+  console.log(usernameInput.value.length);
+  if (usernameInput.value.length < 12) {
+    userNameMessage.innerHTML = "نباید کمتر از 12 کارکتر باشد";
+    userNameMessage.style.display = "block";
+  } else {
+    userNameMessage.innerHTML = "ok ast";
+  }
+})
 
-//itemElm[2].style.backgroundColor='blue'
 
-  setInterval(function () {
-        itemElm.forEach(function(item){
-    rcolorIndex = Math.floor(Math.random() * 255);
-    gcolorIndex = Math.floor(Math.random() * 255);
-    bcolorIndex = Math.floor(Math.random() * 255);
-    
-    item.style.backgroundColor =
-      "rgb(" + rcolorIndex + "," + gcolorIndex + "," + bcolorIndex + ")";
-      item.textContent= item.style.backgroundColor
-          }  )
-  }, 4000);
-
+function passwordValidation() {
+  console.log(passwordInput.value);
+  console.log(passwordInput.value.length);
+  console.log(passWordMessage.innerHTML);
+  if (passwordInput.value.length < 8) {
+    passWordMessage.innerHTML = "نباید کمتر از 8 کارکتر باشد";
+    passWordMessage.style.display = "block";
+  } else {
+    passWordMessage.innerHTML = "ok ast";
+    passWordMessage.style.color='green'
+  }
+}
