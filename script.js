@@ -6,11 +6,21 @@ let countreis = {
   france: ["Paris", "Lyon", "Toulouse", "Bordeaux"],
 };
 
-let dataCountreis = $.querySelector("#countries");
-let dataCiteis = $.querySelector("#citeis");
+let countreisSelectbox = $.querySelector("#countries");
+let citiesSelectbox = $.querySelector("#citeis");
 
 let country;
-dataCountreis.addEventListener("change", function (e) {
+countreisSelectbox.addEventListener("change", function (e) {
+  let options = "";
   country = e.target.value;
-  dataCiteis.value='esfahan'
+  citiesSelectbox.innerHTML = "";
+  if(country==='please select'){
+    options =  "<option " + "value=" + country + ">" + country + "</option>";
+    citiesSelectbox.innerHTML = options
+  }
+  else
+  countreis[country].forEach(function (cnt) {
+    options = options + "<option " + "value=" + cnt + ">" + cnt + "</option>";
+    citiesSelectbox.innerHTML = options;
+  });
 });
